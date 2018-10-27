@@ -4,7 +4,7 @@
 Flashcard app that can display a question and have the user enter their own question
 
 ### App Walk-though
-<img src="https://github.com/Jonathan-Harty/Code-Path-Flashcard/blob/master/lab_2.gif" width=200><br>
+<img src="https://github.com/Jonathan-Harty/Flashcard/blob/master/lab_2.gif" width=200><br>
 
 ## Required
 - [X] User can click on a ‘+’ button that takes the user to new ‘Add Card Screen’
