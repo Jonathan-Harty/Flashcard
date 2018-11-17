@@ -7,6 +7,20 @@
     tools:context=".MainActivity">
 
     <TextView
+        android:id="@+id/empty"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="0dp"
+        android:layout_marginBottom="0dp"
+        android:background="@drawable/card_background"
+        android:text="No Flashcards Have Been Added"
+        android:textAlignment="center"
+        android:textColor="@android:color/black"
+        android:textSize="40sp"
+        android:visibility="invisible" />
+
+    <TextView
         android:id="@+id/flashcardQuestion"
         android:layout_width="match_parent"
         android:layout_height="200dp"
@@ -34,51 +48,49 @@
         android:textSize="40sp"
         android:visibility="invisible" />
 
-    <Button
+    <TextView
         android:id="@+id/choice1"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="230dp"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="213dp"
         android:background="@drawable/button_style"
         android:text="Python"
+        android:textAlignment="center"
+        android:textColor="@android:color/black"
+        android:textSize="18sp"
         android:visibility="invisible" />
 
-    <Button
+    <TextView
         android:id="@+id/choice2"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
         android:layout_alignEnd="@+id/choice1"
         android:layout_alignParentBottom="true"
         android:layout_marginEnd="0dp"
-        android:layout_marginBottom="252dp"
+        android:layout_marginBottom="290dp"
         android:background="@drawable/button_style"
         android:text="Kotlin"
+        android:textAlignment="center"
+        android:textColor="@android:color/black"
+        android:textSize="18sp"
         android:visibility="invisible" />
 
-    <Button
+    <TextView
         android:id="@+id/choice3"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
         android:layout_alignEnd="@+id/choice1"
         android:layout_alignParentBottom="true"
         android:layout_marginEnd="0dp"
-        android:layout_marginBottom="176dp"
+        android:layout_marginBottom="231dp"
         android:background="@drawable/button_style"
         android:text="Java"
-        android:visibility="invisible" />
-
-    <Button
-        android:id="@+id/choice4"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/choice1"
-        android:layout_alignParentBottom="true"
-        android:layout_marginEnd="0dp"
-        android:layout_marginBottom="103dp"
-        android:background="@drawable/button_style"
-        android:text="C++"
+        android:textAlignment="center"
+        android:textColor="@android:color/black"
+        android:textSize="18sp"
         android:visibility="invisible" />
 
     <ImageView
@@ -87,7 +99,7 @@
         android:layout_height="40dp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="23dp"
+        android:layout_marginBottom="24dp"
         android:src="@drawable/view_answers_symbol" />
 
     <ImageView
@@ -96,6 +108,41 @@
         android:layout_height="40dp"
         android:layout_alignTop="@+id/toggle_choices_visibility"
         android:layout_alignParentEnd="true"
-        android:layout_marginEnd="29dp"
+        android:layout_marginTop="2dp"
+        android:layout_marginEnd="361dp"
         android:src="@drawable/add_question" />
+
+    <ImageView
+        android:id="@+id/edit_button"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_alignTop="@+id/toggle_choices_visibility"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="0dp"
+        android:layout_marginEnd="310dp"
+        android:src="@drawable/edit_button" />
+
+    <ImageView
+        android:id="@+id/next_button"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_alignTop="@+id/toggle_choices_visibility"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="2dp"
+        android:layout_marginEnd="9dp"
+        android:src="@drawable/next_button" />
+
+    <ImageView
+        android:id="@+id/delete_button"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_alignTop="@+id/toggle_choices_visibility"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="2dp"
+        android:layout_marginEnd="261dp"
+        android:src="@drawable/delete_button" />
+
+
+
+
 </RelativeLayout>

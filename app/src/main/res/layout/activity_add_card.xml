@@ -34,8 +34,30 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_marginStart="0dp"
-        android:layout_marginTop="133dp"
+        android:layout_marginTop="91dp"
         android:hint="Enter Answer Here"
+        android:inputType="textMultiLine" />
+
+    <EditText
+        android:id="@+id/edit_incorrect_1"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="175dp"
+        android:hint="Enter Incorrect Choice Here"
+        android:inputType="textMultiLine" />
+
+    <EditText
+        android:id="@+id/edit_incorrect_2"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="246dp"
+        android:hint="Enter Incorrect Choice Here"
         android:inputType="textMultiLine" />
 
     <ImageView
