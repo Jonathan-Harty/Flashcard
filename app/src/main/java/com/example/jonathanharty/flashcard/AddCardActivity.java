@@ -70,6 +70,7 @@ public class AddCardActivity extends AppCompatActivity {
 
                     setResult(100, data);
                     finish();
+                    overridePendingTransition(R.anim.left_in, R.anim.right_out);
                 }
             }
         });

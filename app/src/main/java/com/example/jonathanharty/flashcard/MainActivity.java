@@ -1,10 +1,15 @@
 package com.example.jonathanharty.flashcard;
 
+import android.animation.Animator;
 import android.content.Intent;
+import android.os.CountDownTimer;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.ViewAnimationUtils;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -22,6 +27,8 @@ public class MainActivity extends AppCompatActivity {
     boolean emptyState = true;
     List<Flashcard> allFlashcards;
     int currentCardDisplayedIndex = 0;
+
+    CountDownTimer countDownTimer;
 
     FlashcardDatabase flashcardDatabase;
 
@@ -54,6 +61,20 @@ public class MainActivity extends AppCompatActivity {
                 ((TextView)findViewById(R.id.choice2)).setText(allFlashcards.get(0).getWrongAnswer2());
                 ((TextView)findViewById(R.id.choice3)).setText(allFlashcards.get(0).getAnswer());
             }
+
+            countDownTimer = new CountDownTimer(16000, 1000) {
+                @Override
+                public void onTick(long millisUntilFinished) {
+                    ((TextView)(findViewById(R.id.timer))).setText("" + millisUntilFinished/1000);
+                }
+
+                @Override
+                public void onFinish() {
+
+                }
+            };
+
+            startTimer();
         }
         else {
             displayEmpty();
@@ -65,6 +86,18 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 findViewById(R.id.flashcardQuestion).setVisibility(View.INVISIBLE);
                 findViewById(R.id.flashcardAnswer).setVisibility(View.VISIBLE);
+
+                View answerSideView = findViewById(R.id.flashcardAnswer);
+
+                int cx = answerSideView.getWidth()/2;
+                int cy = answerSideView.getHeight()/2;
+
+                float finalRadius = (float)(Math.hypot(cx, cy));
+
+                Animator anim = ViewAnimationUtils.createCircularReveal(answerSideView, cx, cy, 0f, finalRadius);
+
+                anim.setDuration(3000);
+                anim.start();
 
                 isShowingQuestionSide = false;
             }
@@ -109,6 +142,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, AddCardActivity.class);
                 MainActivity.this.startActivityForResult(intent, 100);
+                overridePendingTransition(R.anim.right_in, R.anim.left_out);
             }
         });
 
@@ -133,6 +167,32 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if(allFlashcards.size() > 0) {
+                    startTimer();
+
+                    final Animation leftOutAnim = AnimationUtils.loadAnimation(v.getContext(), R.anim.left_out);
+                    final Animation rightInAnim = AnimationUtils.loadAnimation(v.getContext(), R.anim.right_in);
+
+                    leftOutAnim.setAnimationListener(new Animation.AnimationListener() {
+                        @Override
+                        public void onAnimationStart(Animation animation) {
+
+                        }
+
+                        @Override
+                        public void onAnimationEnd(Animation animation) {
+
+                        }
+
+                        @Override
+                        public void onAnimationRepeat(Animation animation) {
+
+                        }
+                    });
+
+                    findViewById(R.id.flashcardQuestion).startAnimation(leftOutAnim);
+                    findViewById(R.id.flashcardQuestion).startAnimation(rightInAnim);
+
+
                     if(!isShowingQuestionSide) {
                         findViewById(R.id.flashcardQuestion).setVisibility(View.VISIBLE);
                         findViewById(R.id.flashcardAnswer).setVisibility(View.INVISIBLE);
@@ -312,5 +372,10 @@ public class MainActivity extends AppCompatActivity {
             ((TextView)findViewById(R.id.choice2)).setText(allFlashcards.get(currentCardDisplayedIndex).getWrongAnswer2());
             ((TextView)findViewById(R.id.choice3)).setText(allFlashcards.get(currentCardDisplayedIndex).getAnswer());
         }
+    }
+
+    public void startTimer() {
+        countDownTimer.cancel();
+        countDownTimer.start();
     }
 }
